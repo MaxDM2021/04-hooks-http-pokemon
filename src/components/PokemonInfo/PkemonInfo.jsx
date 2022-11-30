@@ -1,11 +1,12 @@
 // import { Component } from "react";
 
-import { useState, useEffect } from 'react';
+import { useState, useEffect,} from 'react';
 
 import PokemonFallbackView from '../PokemonErrorView';
 import PokemonDataView from '../PokemonDataView';
 import PokemonPendingVie from '../PokemonPendingVie';
 import pokemonAPI from '../PokemonApi/PokemonApi';
+// import { useLayoutEffect } from 'react';
 
 const Status = {
     IDLE: 'idle',
@@ -35,6 +36,8 @@ if (!pokemonName) {
     return;
 }
 
+// useEffect - работа с http запросами, locastorage и прочие вычисления
+
 
     setStatus(Status.PENDING);
 
@@ -52,6 +55,9 @@ if (!pokemonName) {
         });
     }, 3000);
   }, [pokemonName]);
+
+
+  // useLayoutEffect - используется для колекций что-бы при скроле новых картинок не подтормаживало, аналог useEffect
 
   if (status === Status.IDLE) {
     return <div>Введите имя покемона!</div>;
